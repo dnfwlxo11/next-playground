@@ -25,7 +25,6 @@ export default function TodoCard({ title, content, state }: TodoCard) {
         {state === TodoState.PENDING && <SvgIcon icon={{...card, src: '/icons/pending.svg'}} />}
       </span>
     </div>
-    
     <div className={style.divider}></div>
     <div className={style.content}>{content}</div>
   </div>

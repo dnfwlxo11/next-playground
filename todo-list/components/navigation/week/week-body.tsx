@@ -34,14 +34,25 @@ export default function WeekBody({ content=[] }: { content: Array<todoObj> }) {
     setTodos(tmpTodos)
   }, [content])
 
-  return <div className={style.week_body}>
-    {todos.length && todos.map((item, idx) => {
-      return <div key={idx} className={style.card}>
-        <div className={style.date}>{item.createdAt}</div>
-        <div className={style.content}>
-          <TodoCard title='test' content='test' state={TodoState.DONE} />
-        </div>
+  return (
+    <>
+      <div className={style.week_head}>
+        <div className={style.week_time}>Time</div>
+        <div className={style.divider}></div>
+        <div className={style.week_events}>Events</div>
       </div>
-    })}
-  </div>
+      <div className={style.week_body}>
+        {todos.length && todos.map((item, idx) => {
+          return <div key={idx} className={style.card}>
+            <div className={style.date}>{item.createdAt}</div>
+            <div className={style.divider}></div>
+            <div className={style.circle}></div>
+            <div className={style.content}>
+              <TodoCard title='test' content='test' state={TodoState.DONE} />
+            </div>
+          </div>
+        })}
+      </div>
+    </>
+  )
 }
