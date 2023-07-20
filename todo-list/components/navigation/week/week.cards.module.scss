@@ -1,0 +1,14 @@
+.cards_wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  background: rgba(63, 66, 195, 1);
+  color: rgba(255, 255, 255, 1);
+  padding: 0 20px 15px 20px;
+
+  .cards {
+    min-width: 380px;
+    display: flex;
+    justify-content: space-between;
+    gap: 0 10px;
+  }
+}

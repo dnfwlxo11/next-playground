@@ -1,24 +1,19 @@
-import Label from '@/components/common/label'
-import SvgIcon from '@/components/common/svg-icon'
-import style from './navigation.module.scss'
-import TodayNav from './today-nav'
-import WeekNav from './week-nav'
+import TodayNav from './today/today-nav'
+import WeekNav from './week/week-nav'
+import WeekCards from './week/week-cards'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-type hello = {
+interface hello {
 	name: string
 }
 
 export default function Header({ type, title='Title' }: { type: string, title?: string }) {
 	const router = useRouter();
+	const navs: Object = { week: 'SCHEDULE', today: 'MY LIST' }
 
 	const [route, setRoute] = useState('')
 	const [hello, setHello] = useState('')
-
-	useEffect(() => {
-		console.log(router)
-	}, [router])
 
 	useEffect(() => {
 		callHello()
@@ -33,12 +28,13 @@ export default function Header({ type, title='Title' }: { type: string, title?: 
 	}
 
 	return (
-		<div className={style.header}>
-			<Label title={title} />
-			<SvgIcon icon={{ src: '/icons/event_note.svg', color: 'rgba(241, 243, 245, 1)' }} />
-			<SvgIcon icon={{ src: '/icons/arrow_back.svg', color: 'rgba(241, 243, 245, 1)' }} />
-			<SvgIcon icon={{ src: '/icons/more_horiz.svg', color: 'rgba(241, 243, 245, 1)' }} />
-			{type === 'today' ? <TodayNav title='SCHEDULE' /> : <WeekNav title='MY LIST' />}
+		<div>
+			{type === 'today' && <TodayNav title='SCHEDULE' />}
+			{type === 'week' && <div>
+					<WeekNav title='MY LIST' />
+					<WeekCards />
+				</div>
+			}
 		</div>
 	)
 }
