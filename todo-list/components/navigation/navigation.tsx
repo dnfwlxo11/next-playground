@@ -1,4 +1,5 @@
 import TodayNav from './today/today-nav'
+import Week from './week/week'
 import WeekNav from './week/week-nav'
 import WeekCards from './week/week-cards'
 import { useEffect, useState } from 'react'
@@ -14,6 +15,12 @@ export default function Header({ type, title='Title' }: { type: string, title?: 
 
 	const [route, setRoute] = useState('')
 	const [hello, setHello] = useState('')
+
+	const test = [
+		{ title: 1, createdAt: (new Date()).getTime(), content: 'test' },
+		{ title: 1, createdAt: (new Date()).getTime(), content: 'test' },
+		{ title: 1, createdAt: (new Date()).getTime(), content: 'test' },
+	]
 
 	useEffect(() => {
 		callHello()
@@ -31,8 +38,7 @@ export default function Header({ type, title='Title' }: { type: string, title?: 
 		<div>
 			{type === 'today' && <TodayNav title='SCHEDULE' />}
 			{type === 'week' && <div>
-					<WeekNav title='MY LIST' />
-					<WeekCards />
+				<Week title='test' content={test} />
 				</div>
 			}
 		</div>
