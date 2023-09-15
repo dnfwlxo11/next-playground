@@ -4,21 +4,18 @@ import { useEffect, useState } from 'react'
 
 export default function HomePage() {
 	const router = useRouter()
-  	const [type, setType] = useState<string | undefined>()
+  const [type, setType] = useState<string | undefined>()
 
 	const safetyRouter = ['week', 'today']
 
-  	useEffect(() => {
-		console.log(router?.query, 'router')
+	useEffect(() => {
     const queries = router?.query || 'week'
 
-		console.log(queries.type, 'router type')
-
 		if (queries.type) {
-			console.log(queries.type)
-			setType(queries.type)
+			console.log(queries, 'queries type')
+			setType(queries?.type)
 		}
-  	}, [router])
+	}, [router])
 
 	return (
 		<>

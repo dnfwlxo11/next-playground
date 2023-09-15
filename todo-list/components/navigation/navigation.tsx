@@ -38,7 +38,7 @@ export default function Header({ type, title='Title' }: { type: string, title?: 
 		<div>
 			{type === 'today' && <TodayNav title='SCHEDULE' />}
 			{type === 'week' && <div>
-				<Week title='test' content={test} />
+					<Week title='test' content={test} />
 				</div>
 			}
 		</div>

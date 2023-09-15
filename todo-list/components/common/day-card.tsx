@@ -2,8 +2,8 @@ import style from './day.card.module.scss'
 
 interface dayCard {
   id?: string,
-  day: Number,
-  weekday: Number
+  day?: string,
+  weekday?: string
 }
 
 enum Weekday {
@@ -16,14 +16,14 @@ enum Weekday {
   SAT,
 }
 
-export default function DayCard({ id, day, weekday }: dayCard) {
-  function getWeekday<T>(type: T, day: number): T[keyof T] {
-    const weekday = day as keyof T
-    return type[weekday - 1]
-  }
+export default function DayCard(props: dayCard) {
+  // function getWeekday<T>(type: T, day: number): T[keyof T] {
+  //   const weekday = day as keyof T
+  //   return type[weekday - 1]
+  // }
 
   return <div className={style.card}>
-    <div className={style.weekday}>{weekday}</div>
-    <div className={style.day}>{getWeekday(Weekday, day)}</div>
+    <div className={style.weekday}>{props.weekday}</div>
+    <div className={style.day}>{props.day}</div>
   </div>
 }
