@@ -1,7 +1,7 @@
 import TodoCard from '@/components/common/todo-card'
 import TodoState from '@/utils/contants/todoState'
 import { extractToDate } from '@/utils/function/date'
-import style from './week.body.module.scss'
+import style from './css/week.body.module.scss'
 import { useEffect, useState } from 'react'
 
 type todoObj = {

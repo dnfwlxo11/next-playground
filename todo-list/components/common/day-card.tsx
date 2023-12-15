@@ -1,4 +1,4 @@
-import style from './day.card.module.scss'
+import style from './css/day.card.module.scss'
 
 interface dayCard {
   id?: string,

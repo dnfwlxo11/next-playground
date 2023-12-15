@@ -17,9 +17,9 @@ export default function Header({ type, title='Title' }: { type: string, title?: 
 	const [hello, setHello] = useState('')
 
 	const test = [
-		{ title: 1, createdAt: (new Date()).getTime(), content: 'test' },
-		{ title: 1, createdAt: (new Date()).getTime(), content: 'test' },
-		{ title: 1, createdAt: (new Date()).getTime(), content: 'test' },
+		{ title: '1', createdAt: (new Date()).getTime(), content: 'test' },
+		{ title: '1', createdAt: (new Date()).getTime(), content: 'test' },
+		{ title: '1', createdAt: (new Date()).getTime(), content: 'test' },
 	]
 
 	useEffect(() => {
@@ -37,10 +37,8 @@ export default function Header({ type, title='Title' }: { type: string, title?: 
 	return (
 		<div>
 			{type === 'today' && <TodayNav title='SCHEDULE' />}
-			{type === 'week' && <div>
-					<Week title='test' content={test} />
-				</div>
-			}
+			{type === 'week' && <Week title='test' content={test} /> }
+			{type === 'day' && <Week title='test' content={test} /> }
 		</div>
 	)
 }

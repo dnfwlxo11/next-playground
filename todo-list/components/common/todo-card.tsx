@@ -1,6 +1,6 @@
 import TodoState from '@/utils/contants/todoState'
 import SvgIcon from './svg-icon'
-import style from './todo.card.module.scss'
+import style from './css/todo.card.module.scss'
 
 interface TodoCard {
   title: string,

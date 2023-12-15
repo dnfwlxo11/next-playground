@@ -1,5 +1,5 @@
 import SvgIcon from '@/components/common/svg-icon'
-import style from './week.nav.module.scss'
+import style from './css/week.nav.module.scss'
 
 export default function Week({ title }: { title: string }) {
 	return (

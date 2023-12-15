@@ -1,5 +1,5 @@
 import SvgIcon from '@/components/common/svg-icon'
-import style from './today.nav.module.scss'
+import style from './css/today.nav.module.scss'
 import DayCard from '@/components/common/day-card'
 
 export default function TodayNav({ title }: { title: string }) {
