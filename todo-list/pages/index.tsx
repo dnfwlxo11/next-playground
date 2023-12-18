@@ -1,18 +1,16 @@
-import HomePage from './todo/[type]'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import Week from './week'
 
 export default function Home() {
   const router = useRouter()
 
-  useEffect(() => {
-    router.push('/todo/week')
-  }, [router])
+  // useEffect(() => {
+  //   router.push('/todo/week')
+  // }, [router])
   return (
-    <div>
-      <main>
-        <HomePage />
-      </main>
-    </div>
+    <main>
+      <Week />
+    </main>
   )
 }

@@ -3,7 +3,6 @@ import WeekCards from './week-cards'
 import WeekBody from './week-body'
 
 interface Week {
-  title: string,
   content: Array<todoObj>,
 }
 
@@ -13,9 +12,8 @@ type todoObj = {
   content: string,
 }
 
-export default function Week({ title, content }: Week) {
+export default function Week({ content }: Week) {
   return <>
-    <WeekNav title={title} />
     <WeekCards />
     <WeekBody content={content} />
   </>

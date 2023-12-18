@@ -1,4 +1,4 @@
-import TodoCard from '@/components/common/todo-card'
+import TodoCard from '@/components/Common/todo-card'
 import TodoState from '@/utils/contants/todoState'
 import { extractToDate } from '@/utils/function/date'
 import style from './css/week.body.module.scss'

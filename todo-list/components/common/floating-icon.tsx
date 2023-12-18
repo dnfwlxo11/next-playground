@@ -1,4 +1,4 @@
-import SvgIcon from './svg-icon'
+import SvgIcon from './SvgIcon'
 
 
 export default function FloatingIcon({ content, children }: { content: string }) {

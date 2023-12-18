@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import DayCard from '@/components/common/day-card';
+import DayCard from '@/components/Common/day-card';
 import style from './css/week.cards.module.scss'
 import Link from "next/link";
 

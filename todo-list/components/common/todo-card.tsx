@@ -1,5 +1,5 @@
 import TodoState from '@/utils/contants/todoState'
-import SvgIcon from './svg-icon'
+import SvgIcon from './SvgIcon'
 import style from './css/todo.card.module.scss'
 
 interface TodoCard {
