@@ -5,9 +5,9 @@ export enum STATE {
 }
 
 export enum PRIORITY {
-  VERY_HIGH,
-  HIGH,
-  MEDIUM,
-  LOW,
-  VERY_LOW
+  highest,
+  high,
+  normal,
+  low,
+  lowest
 }

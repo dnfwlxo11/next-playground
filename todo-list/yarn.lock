@@ -218,14 +218,14 @@
   "resolved" "https://registry.npmjs.org/@emotion/hash/-/hash-0.9.1.tgz"
   "version" "0.9.1"
 
-"@esbuild/darwin-arm64@0.17.6":
-  "integrity" "sha512-bsDRvlbKMQMt6Wl08nHtFz++yoZHsyTOxnjfB2Q95gato+Yi4WnRl13oC2/PJJA9yLCoRv9gqT/EYX0/zDsyMA=="
-  "resolved" "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.17.6.tgz"
+"@esbuild/darwin-x64@0.17.6":
+  "integrity" "sha512-xh2A5oPrYRfMFz74QXIQTQo8uA+hYzGWJFoeTE8EvoZGHb+idyV4ATaukaUvnnxJiauhs/fPx3vYhU4wiGfosg=="
+  "resolved" "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.17.6.tgz"
   "version" "0.17.6"
 
-"@esbuild/darwin-arm64@0.18.20":
-  "integrity" "sha512-bxRHW5kHU38zS2lPTPOyuyTm+S+eobPUnTNkdJEfAddYgEcll4xkT8DB9d2008DtTbl7uJag2HuE5NZAZgnNEA=="
-  "resolved" "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.18.20.tgz"
+"@esbuild/darwin-x64@0.18.20":
+  "integrity" "sha512-pc5gxlMDxzm513qPGbCbDukOdsGtKhfxD1zJKXjCCcU7ju50O7MeAZ8c4krSJcOIJGFR+qx21yMMVYwiQvyTyQ=="
+  "resolved" "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.18.20.tgz"
   "version" "0.18.20"
 
 "@eslint-community/eslint-utils@^4.2.0":
@@ -331,9 +331,9 @@
   dependencies:
     "glob" "7.1.7"
 
-"@next/swc-darwin-arm64@13.4.10":
-  "integrity" "sha512-4bsdfKmmg7mgFGph0UorD1xWfZ5jZEw4kKRHYEeTK9bT1QnMbPVPlVXQRIiFPrhoDQnZUoa6duuPUJIEGLV1Jg=="
-  "resolved" "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.10.tgz"
+"@next/swc-darwin-x64@13.4.10":
+  "integrity" "sha512-ngXhUBbcZIWZWqNbQSNxQrB9T1V+wgfCzAor2olYuo/YpaL6mUYNUEgeBMhr8qwV0ARSgKaOp35lRvB7EmCRBg=="
+  "resolved" "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-13.4.10.tgz"
   "version" "13.4.10"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -494,7 +494,7 @@
   dependencies:
     "@babel/core" "^7.20.7"
 
-"@vanilla-extract/css@^1.13.0":
+"@vanilla-extract/css@^1.0.0", "@vanilla-extract/css@^1.13.0":
   "integrity" "sha512-JFFBXhnJrPlGqHBabagXqo5ghXw9mtV270ycIGyLDZG8NAK5eRwAYkMowAxuzK7wZSm67GnETWYB7b0AUmyttg=="
   "resolved" "https://registry.npmjs.org/@vanilla-extract/css/-/css-1.13.0.tgz"
   "version" "1.13.0"
@@ -528,6 +528,13 @@
     "modern-ahocorasick" "^1.0.0"
     "outdent" "^0.8.0"
 
+"@vanilla-extract/dynamic@^2.1.0":
+  "integrity" "sha512-8zl0IgBYRtgD1h+56Zu13wHTiMTJSVEa4F7RWX9vTB/5Xe2KtjoiqApy/szHPVFA56c+ex6A4GpCQjT1bKXbYw=="
+  "resolved" "https://registry.npmjs.org/@vanilla-extract/dynamic/-/dynamic-2.1.0.tgz"
+  "version" "2.1.0"
+  dependencies:
+    "@vanilla-extract/private" "^1.0.3"
+
 "@vanilla-extract/integration@^6.0.0":
   "integrity" "sha512-+AfymNMVq9sEUe0OJpdCokmPZg4Zi6CqKaW/PnUOfDwEn53ighHOMOBl5hAgxYR8Kiz9NG43Bn00mkjWlFi+ng=="
   "resolved" "https://registry.npmjs.org/@vanilla-extract/integration/-/integration-6.2.4.tgz"
@@ -559,6 +566,11 @@
   "integrity" "sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ=="
   "resolved" "https://registry.npmjs.org/@vanilla-extract/private/-/private-1.0.3.tgz"
   "version" "1.0.3"
+
+"@vanilla-extract/recipes@^0.5.1":
+  "integrity" "sha512-7dCuBgPQQ/89siQ0w2lkfjgkmToPUUDzFlHf5DRmt9ykiiycfA52tmPJ2RI/mr7jXi7U/vEN2aGP9QJSXEpGlA=="
+  "resolved" "https://registry.npmjs.org/@vanilla-extract/recipes/-/recipes-0.5.1.tgz"
+  "version" "0.5.1"
 
 "@vanilla-extract/webpack-plugin@^2.2.0":
   "integrity" "sha512-S767iP+S67Uh+BsTe+u60BMbtRqZAxzjK7gYd6a+1hcbMKznYxdQMeP2qs9wr+NhRqZFrNxewo3/ztMnN85TOg=="

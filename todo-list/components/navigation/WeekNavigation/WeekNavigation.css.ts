@@ -9,7 +9,7 @@ export const week_navigation = style({
 
 export const plus_icon = style ({
   marginLeft: 'auto',
-  marginRight: 10,
+  marginRight: 15,
 })
 
 export const magnify_icon = style ({
