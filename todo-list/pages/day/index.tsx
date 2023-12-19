@@ -1,7 +1,5 @@
-import DayContainer from '@/components/Container/Day/Day'
+import Day from './[day]'
 
-export default function Day() {
-  return <>
-    <DayContainer />
-  </>
+export default function DayIndex() {
+  return <Day />
 }
