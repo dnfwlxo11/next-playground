@@ -1,13 +1,13 @@
 export enum STATE {
-  DONE,
-  PROGRESS,
-  PENDING,
+  DONE = 'DONE',
+  PROGRESS = 'PROGRESS',
+  PENDING = 'PENDING',
 }
 
 export enum PRIORITY {
-  highest,
-  high,
-  normal,
-  low,
-  lowest
+  HIGHEST = 'highest',
+  HIGH = 'high',
+  NORMAL = 'normal',
+  LOW = 'low',
+  LOWEST = 'lowest'
 }

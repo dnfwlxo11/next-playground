@@ -35,22 +35,22 @@ export default function MainTodoList({ date: target }: { date: date }) {
       time: (new Date()).getTime(),
       title: 'qwe1',
       content: 'qwer1',
-      priority: PRIORITY[0],
-      state: STATE[0],
+      priority: PRIORITY['NORMAL'],
+      state: STATE['PROGRESS'],
     },
     {
       time: (new Date()).getTime(),
       title: 'qwe2',
       content: 'qwer2',
-      priority: PRIORITY[1],
-      state: STATE[1],
+      priority: PRIORITY['HIGH'],
+      state: STATE['PENDING'],
     },
     {
       time: (new Date()).getTime(),
       title: 'qwe3',
       content: 'qwer3',
-      priority: PRIORITY[2],
-      state: STATE[2],
+      priority: PRIORITY['LOW'],
+      state: STATE['DONE'],
     }
   ])
 

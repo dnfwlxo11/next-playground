@@ -29,21 +29,21 @@ export enum MONTH_FULL {
 }
 
 export enum WEEKDAY_SHORT {
-  SUN,
-  MON,
-  TUE,
-  WED,
-  THU,
-  FRI,
-  SAT,
+  'SUN',
+  'MON',
+  'TUE',
+  'WED',
+  'THU',
+  'FRI',
+  'SAT',
 }
 
 export enum WEEKDAY_FULL {
-  SUNDAY,
-  MONDAY,
-  TUESDAY,
-  WEDNESDAY,
-  THURSDAY,
-  FRIDAY,
-  SATURDAY,
+  'SUNDAY',
+  'MONDAY',
+  'TUESDAY',
+  'WEDNESDAY',
+  'THURSDAY',
+  'FRIDAY',
+  'SATURDAY',
 }
