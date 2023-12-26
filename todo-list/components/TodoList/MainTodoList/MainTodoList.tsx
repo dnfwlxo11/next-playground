@@ -32,6 +32,7 @@ export default function MainTodoList({ date: target }: { date: date }) {
   const [weekday, setWeekday] = useState<number>(0)
   const [todos, setTodos] = useState<Array<todo>>([
     {
+      id: '1',
       time: (new Date()).getTime(),
       title: 'qwe1',
       content: 'qwer1',
@@ -39,6 +40,7 @@ export default function MainTodoList({ date: target }: { date: date }) {
       state: STATE['PROGRESS'],
     },
     {
+      id: '2',
       time: (new Date()).getTime(),
       title: 'qwe2',
       content: 'qwer2',
@@ -46,6 +48,7 @@ export default function MainTodoList({ date: target }: { date: date }) {
       state: STATE['PENDING'],
     },
     {
+      id: '3',
       time: (new Date()).getTime(),
       title: 'qwe3',
       content: 'qwer3',
@@ -55,6 +58,7 @@ export default function MainTodoList({ date: target }: { date: date }) {
   ])
 
   const router = useRouter()
+  
   const f_getTime = (timestamp: number) => {
     const date = new Date(timestamp)
     const hour = date.getHours()
@@ -96,7 +100,7 @@ export default function MainTodoList({ date: target }: { date: date }) {
     </div>
     <div className={todo_list}>
       {todos.length && todos.map((todo: todo) => {
-        return <div className={todo_card}>
+        return <div key={todo.id} className={todo_card}>
           <div className={todo_card_date}>
             {f_getTime(todo.time)}
           </div>
