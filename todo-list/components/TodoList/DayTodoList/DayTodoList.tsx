@@ -63,7 +63,6 @@ export default function DayTodoList(todo: date) {
   ]
 
   useEffect(() => {
-    console.log(router)
     const { month, day } = router.query
     setMonth(Number(month))
     setDay(Number(day))

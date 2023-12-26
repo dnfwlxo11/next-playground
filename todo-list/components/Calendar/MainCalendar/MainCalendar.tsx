@@ -57,7 +57,6 @@ export default function MainCalendar() {
     const { year: prevYear, month: prevMonth } = extractToPrevMonth(timestamp)
     const { year: nextYear, month: nextMonth } = extractToNextMonth(timestamp)
 
-    console.log(year, month, day)
     setTargetDate({ year, month, day })
     setMonthDays((prev) => [ 
       ...prev, 

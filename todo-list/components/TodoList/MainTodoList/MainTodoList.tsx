@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react"
+import { Fragment, useContext, useEffect, useState } from "react"
 import { assignInlineVars } from '@vanilla-extract/dynamic'
 import {
   main_todo,
@@ -24,6 +24,7 @@ import {
 import { date } from '@/utils/interface/date'
 import { useRouter } from "next/router"
 import Link from "next/link"
+import { Context as todoContext } from '@/contexts/todoContext'
 
 import { todo } from '@/utils/interface/todo'
 
@@ -58,6 +59,8 @@ export default function MainTodoList({ date: target }: { date: date }) {
   ])
 
   const router = useRouter()
+
+  const { date: initDate } = useContext(todoContext)
   
   const f_getTime = (timestamp: number) => {
     const date = new Date(timestamp)
@@ -77,6 +80,7 @@ export default function MainTodoList({ date: target }: { date: date }) {
 
     setDate(target)
     setWeekday(tmpWeekday)
+    console.log(initDate)
   }, [target])
 
   return <Fragment>
