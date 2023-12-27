@@ -1,7 +1,7 @@
 import createDataContext from './index'
 
 const initialState = {
-  date: (new Date()).getTime(),
+  date: null,
 }
 
 export const { Context, Provider } = createDataContext(initialState)

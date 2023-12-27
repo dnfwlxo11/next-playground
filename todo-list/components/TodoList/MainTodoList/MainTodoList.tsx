@@ -80,7 +80,6 @@ export default function MainTodoList({ date: target }: { date: date }) {
 
     setDate(target)
     setWeekday(tmpWeekday)
-    console.log(initDate)
   }, [target])
 
   return <Fragment>

@@ -1,4 +1,4 @@
-import { useEffect, useState, Fragment } from 'react'
+import { useEffect, useState, Fragment, useContext } from 'react'
 import { 
   calendar, 
   calendar_title, 
@@ -19,31 +19,37 @@ import {
   MONTH_FULL,
   WEEKDAY_SHORT,
 } from '@/utils/contants/date'
-import { date } from '@/utils/interface/date'
+import {
+  date,
+} from '@/utils/interface/date'
 import { useRouter } from 'next/router'
 import MainTodoList from '@/components/TodoList/MainTodoList'
+import { Context as todoContext } from '@/contexts/todoContext'
 
 export default function MainCalendar() {
-  const [targetDate, setTargetDate] = useState<date>({ year: 0, month: 0, day: 0 })
+  const [targetDate, setTargetDate] = useState<date>()
   const [monthDays, setMonthDays] = useState<Array<date>>([])
 
   const router = useRouter()
+  const { date: initDate } = useContext(todoContext)
 
   const onClickDayCard = (year: number, month: number, day: number) => {
+    localStorage.setItem('latestDate', JSON.stringify({ year, month, day }))
+
     setTargetDate({
       year,
       month,
       day,
     })
-    // router.push({ pathname: `/day/${day}`, query: { year, month } })
   }
 
   useEffect(() => {
     setMonthDays([])
-    const { year: targetYear, month: targetMonth, day: targetDay} = targetDate
-    const timestamp: number = !targetYear && !targetMonth && !targetDay 
+    const { year: ltsYear, month: ltsMonth, day: ltsDay }: date = JSON.parse(localStorage.getItem('latestDate') || '{}')
+    // const { year: targetYear, month: targetMonth, day: targetDay}: date = targetDate
+    const timestamp: number = !ltsYear || !ltsMonth || !ltsDay 
       ? (new Date()).getTime()
-      : (new Date(targetYear, targetMonth, targetDay)).getTime()
+      : (new Date(ltsYear, ltsMonth, ltsDay)).getTime()
       
     const { 
       year,
@@ -75,7 +81,7 @@ export default function MainCalendar() {
   return <Fragment>
     <div className={calendar}>
       <div className={calendar_title}>
-        {targetDate.month && MONTH_FULL[targetDate.month - 1]}
+        {targetDate && targetDate.month && MONTH_FULL[targetDate.month - 1]}
       </div>
       <div className={weekday_nav}>
         {[1,2,3,4,5,6,7].map((item, idx) => { 
@@ -91,7 +97,7 @@ export default function MainCalendar() {
                   <span 
                     className={`
                       ${month_day},
-                      ${targetDate.year === year
+                      ${targetDate && targetDate.year === year
                       && targetDate.month === month
                       && targetDate.day === day 
                       ? active_month_day : ''}

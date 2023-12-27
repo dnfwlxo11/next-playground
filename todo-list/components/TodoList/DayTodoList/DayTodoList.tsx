@@ -32,13 +32,13 @@ import SvgIcon from '@/components/Common/SvgIcon'
 export default function DayTodoList(todo: date) {
   const router = useRouter()
 
-  const [month, setMonth] = useState<number>(1)
-  const [day, setDay] = useState<number>(0)
+  const [month, setMonth] = useState<number | undefined>(1)
+  const [day, setDay] = useState<number | undefined>(0)
 
   const dummy: Array<todo> = [
     {
       id: '1',
-      time: (new Date()).getTime(),
+      time: 1703662407765,
       title: 'qwe1',
       content: 'qwer1',
       priority: PRIORITY['NORMAL'],
@@ -46,7 +46,7 @@ export default function DayTodoList(todo: date) {
     },
     {
       id: '2',
-      time: (new Date()).getTime(),
+      time: 1703662407765,
       title: 'qwe2',
       content: 'qwer2',
       priority: PRIORITY['HIGH'],
@@ -54,7 +54,7 @@ export default function DayTodoList(todo: date) {
     },
     {
       id: '3',
-      time: (new Date()).getTime(),
+      time: 1703662407765,
       title: 'qwe3',
       content: 'qwer3',
       priority: PRIORITY['LOW'],
@@ -63,16 +63,16 @@ export default function DayTodoList(todo: date) {
   ]
 
   useEffect(() => {
-    const { month, day } = router.query
-    setMonth(Number(month))
-    setDay(Number(day))
+    const { year, month, day }: date = JSON.parse(localStorage.getItem('latestDate') || '{}')
+    setMonth(month)
+    setDay(day)
   }, [router])
 
   return <div className={day_todos}>
     <div className={day_todos_title}>
       TO-DO
       <span className={day_todos_title_sub}>
-        {MONTH_SHORT[month - 1]} {day}
+        {month && MONTH_SHORT[month - 1]} {day && day}
       </span>
     </div>
     <div className={day_todo_list}>
