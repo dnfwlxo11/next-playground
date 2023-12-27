@@ -5,7 +5,8 @@ export const main_todo = style({
   display: 'flex',
   alignItems: 'center',
   boxSizing: 'border-box',
-  padding: '10px 40px',
+  padding: '10px 0',
+  // height: 50,
 })
 
 export const main_todo_title = style({
@@ -22,25 +23,45 @@ export const more_btn = style({
 })
 
 export const todo_list = style({
+  flex: 1,
   boxSizing: 'border-box',
-  padding: '20px 40px',
+  padding: '20px 0',
   paddingTop: 0,
-  display: 'flex',
-  flexDirection: 'column',
+  overflowY: 'auto',
+
+  '::-webkit-scrollbar': {
+    display: 'none',
+  }
 })
 
 export const todo_card = style({
   display: 'flex',
   boxSizing: 'border-box',
   padding: '15px 0',
+  borderBottom: '0.5px solid rgba(221, 223, 225, 1)',
 
   ':first-child': {
     borderTop: '0.5px solid rgba(221, 223, 225, 1)',
   },
 })
 
+export const todo_add = style({
+  textAlign: 'center',
+  boxSizing: 'border-box',
+  padding: '15px 0',
+  borderTop: '0.5px solid rgba(221, 223, 225, 1)',
+  fontSize: 14,
+  fontWeight: 700,
+  color: 'rgba(29, 31, 38, 1)',
+})
+
+export const todo_add_icon = style({
+  textAlign: 'center',
+  margin: '10px',
+})
+
 export const todo_card_date = style({
-  width: 60,
+  minWidth: 60,
   textAlign: 'right',
   fontSize: 14,
   color: 'rgba(98, 99, 103, 1)',
@@ -49,8 +70,10 @@ export const todo_card_date = style({
 
 export const todo_card_priority = style({
   boxSizing: 'border-box',
-  padding: '0 15px',
+  minWidth: 40,
   paddingTop: 3,
+  display: 'flex',
+  justifyContent: 'center',
 })
 export const todo_card_priority_circle = recipe({
   base: {
@@ -74,7 +97,7 @@ export const todo_card_priority_circle = recipe({
 })
 
 export const todo_card_main = style({
-  flex: 1,
+  width: 'calc(100% - (40px + 60px))',
 })
 
 export const todo_card_title = style({
@@ -88,4 +111,5 @@ export const todo_card_content = style({
   fontSize: 14,
   color: 'rgba(180, 183, 193, 1)',
   fontWeight: 600,
+  wordWrap: 'break-word',
 })

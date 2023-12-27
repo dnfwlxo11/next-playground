@@ -1,8 +1,11 @@
 import { style } from '@vanilla-extract/css'
 
 export const calendar = style({
+  display: 'flex',
+  flexDirection: 'column',
   boxSizing: 'border-box',
   padding: '20px 40px',
+  height: 'calc(100% - 70px)',
 })
 
 export const calendar_title = style({
@@ -11,6 +14,9 @@ export const calendar_title = style({
   marginBottom: 20,
   color: 'rgba(29, 31, 38, 1)',
   textAlign: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 })
 
 export const weekday_nav = style({

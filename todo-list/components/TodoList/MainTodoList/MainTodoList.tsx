@@ -6,6 +6,8 @@ import {
   more_btn,
   todo_list,
   todo_card,
+  todo_add,
+  todo_add_icon,
   todo_card_date,
   todo_card_priority,
   todo_card_priority_circle,
@@ -27,6 +29,7 @@ import Link from "next/link"
 import { Context as todoContext } from '@/contexts/todoContext'
 
 import { todo } from '@/utils/interface/todo'
+import SvgIcon from "@/components/Common/SvgIcon"
 
 export default function MainTodoList({ date: target }: { date: date }) {
   const [date, setDate] = useState<date>({ year: 0, month: 0, day: 0 })
@@ -74,7 +77,7 @@ export default function MainTodoList({ date: target }: { date: date }) {
   useEffect(() => {
     const { year, month, day } = target
 
-    if (!year && !month && !day) return
+    if (!year || !month || !day) return
 
     const tmpWeekday = (new Date(year, month - 1, day)).getDay()
 
@@ -85,7 +88,7 @@ export default function MainTodoList({ date: target }: { date: date }) {
   return <Fragment>
     <div className={main_todo}>
       <div className={main_todo_title}>
-        {WEEKDAY_FULL[weekday]} {date.day}, {MONTH_SHORT[date.month - 1]}
+        {WEEKDAY_FULL[weekday]} {date.day}, {date.month && MONTH_SHORT[date.month - 1]}
       </div>
       <div className={more_btn}>
         <Link href={{ 
@@ -102,24 +105,36 @@ export default function MainTodoList({ date: target }: { date: date }) {
       </div>
     </div>
     <div className={todo_list}>
-      {todos.length && todos.map((todo: todo) => {
-        return <div key={todo.id} className={todo_card}>
-          <div className={todo_card_date}>
-            {f_getTime(todo.time)}
-          </div>
-          <div className={todo_card_priority}>
-            <div className={todo_card_priority_circle(assignInlineVars({ color: `${todo.priority.toString()}` }))}></div>
-          </div>
-          <div className={todo_card_main}>
-            <div className={todo_card_title}>
-              {todo.title}
+      {todos.length ? <>
+        {todos.map((todo: todo) => {
+          return <div key={todo.id} className={todo_card}>
+            <div className={todo_card_date}>
+              {f_getTime(todo.time)}
             </div>
-            <div className={todo_card_content}>
-              {todo.content}
+            <div className={todo_card_priority}>
+              <div className={todo_card_priority_circle(assignInlineVars({ color: `${todo.priority.toString()}` }))}></div>
             </div>
+            <div className={todo_card_main}>
+              <div className={todo_card_title}>
+                {todo.title}
+              </div>
+              <div className={todo_card_content}>
+                {todo.content}
+              </div>
+            </div>
+          </div>
+        })}
+        <div className={todo_add}>
+          <div className={todo_add_icon}>
+            <SvgIcon icon={{ src: '/icons/plus_box.svg', width: '24px', height: '24px', color: 'rgba(29, 31, 38, 1)' }} />
           </div>
         </div>
-      })}
+      </> : <div className={todo_add}>
+        <div>Write down your to-dos!</div>
+        <div className={todo_add_icon}>
+          <SvgIcon icon={{ src: '/icons/plus_box.svg', width: '24px', height: '24px', color: 'rgba(29, 31, 38, 1)' }} />
+        </div>
+      </div>}
     </div>
   </Fragment>
 }
