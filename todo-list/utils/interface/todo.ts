@@ -7,4 +7,5 @@ export interface todo {
   content: string,
   priority: PRIORITY,
   state: STATE,
+  // [prop: string]: any,
 }

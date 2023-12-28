@@ -30,40 +30,13 @@ import { Context as todoContext } from '@/contexts/todoContext'
 
 import { todo } from '@/utils/interface/todo'
 import SvgIcon from "@/components/Common/SvgIcon"
+import CreateTodoModal from "@/components/Modal/createTodoModal"
 
 export default function MainTodoList({ date: target }: { date: date }) {
   const [date, setDate] = useState<date>({ year: 0, month: 0, day: 0 })
   const [weekday, setWeekday] = useState<number>(0)
-  const [todos, setTodos] = useState<Array<todo>>([
-    {
-      id: '1',
-      time: (new Date()).getTime(),
-      title: 'qwe1',
-      content: 'qwer1',
-      priority: PRIORITY['NORMAL'],
-      state: STATE['PROGRESS'],
-    },
-    {
-      id: '2',
-      time: (new Date()).getTime(),
-      title: 'qwe2',
-      content: 'qwer2',
-      priority: PRIORITY['HIGH'],
-      state: STATE['PENDING'],
-    },
-    {
-      id: '3',
-      time: (new Date()).getTime(),
-      title: 'qwe3',
-      content: 'qwer3',
-      priority: PRIORITY['LOW'],
-      state: STATE['DONE'],
-    }
-  ])
-
-  const router = useRouter()
-
-  const { date: initDate } = useContext(todoContext)
+  const [todos, setTodos] = useState<todo[]>([])
+  const [isModal, setIsModal] = useState<boolean>(false)
   
   const f_getTime = (timestamp: number) => {
     const date = new Date(timestamp)
@@ -80,10 +53,21 @@ export default function MainTodoList({ date: target }: { date: date }) {
     if (!year || !month || !day) return
 
     const tmpWeekday = (new Date(year, month - 1, day)).getDay()
+    const todos = JSON.parse(localStorage.getItem('todos') || '{}')
 
     setDate(target)
+    setTodos(todos[`${year}.${month}.${day}`] || [])
     setWeekday(tmpWeekday)
   }, [target])
+
+  const onClickAddTodo = (data: todo) => {
+    const { year, month, day } = target
+
+    if (!year || !month || !day) return
+
+    const key = `${year}.${month}.${day}`
+    setTodos([ ...todos, data ])
+  }
 
   return <Fragment>
     <div className={main_todo}>
@@ -125,16 +109,30 @@ export default function MainTodoList({ date: target }: { date: date }) {
           </div>
         })}
         <div className={todo_add}>
-          <div className={todo_add_icon}>
-            <SvgIcon icon={{ src: '/icons/plus_box.svg', width: '24px', height: '24px', color: 'rgba(29, 31, 38, 1)' }} />
+          <div className={todo_add_icon} onClick={() => setIsModal(!isModal)}>
+            <SvgIcon 
+              icon={{ 
+                src: '/icons/plus_box.svg', 
+                width: '24px', 
+                height: '24px', 
+                color: 'rgba(29, 31, 38, 1)' 
+              }} 
+            />
           </div>
         </div>
       </> : <div className={todo_add}>
         <div>Write down your to-dos!</div>
-        <div className={todo_add_icon}>
+        <div className={todo_add_icon} onClick={() => setIsModal(!isModal)}>
           <SvgIcon icon={{ src: '/icons/plus_box.svg', width: '24px', height: '24px', color: 'rgba(29, 31, 38, 1)' }} />
         </div>
       </div>}
     </div>
+    {isModal && 
+      <CreateTodoModal 
+        date={target}
+        prevData={todos} 
+        setTodos={setTodos} 
+        closeModal={setIsModal} 
+      />}
   </Fragment>
 }
