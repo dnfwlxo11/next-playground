@@ -66,7 +66,6 @@ export const day_check_circle = recipe({
       }
     }
   }
-  
 })
 
 export const day_todo_content = style({

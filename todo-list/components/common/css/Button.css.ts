@@ -2,11 +2,12 @@ import { recipe } from "@vanilla-extract/recipes";
 
 export const button = recipe({
   base: {
+    width: '100%',
     border: 'none',
     display: 'block',
     color: 'rgba(255, 255, 255, 1)',
     boxSizing: 'border-box',
-    padding: '5px 10px',
+    padding: '7px 10px',
     borderRadius: 8,
   },
   variants: {
