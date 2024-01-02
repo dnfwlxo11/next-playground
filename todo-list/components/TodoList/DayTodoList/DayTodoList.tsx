@@ -34,6 +34,7 @@ export default function DayTodoList(todo: date) {
 
   const [month, setMonth] = useState<number | undefined>(1)
   const [day, setDay] = useState<number | undefined>(0)
+  const [todos, setTodos] = useState<Array<todo>>([])
 
   const dummy: Array<todo> = [
     {
@@ -66,6 +67,9 @@ export default function DayTodoList(todo: date) {
     const { year, month, day }: date = JSON.parse(localStorage.getItem('latestDate') || '{}')
     setMonth(month)
     setDay(day)
+    
+    const targetTodos = JSON.parse(localStorage.getItem('todos') || '[]')
+    setTodos(targetTodos)
   }, [router])
 
   return <div className={day_todos}>
@@ -76,7 +80,7 @@ export default function DayTodoList(todo: date) {
       </span>
     </div>
     <div className={day_todo_list}>
-      {dummy.length && dummy.map((todo, idx) => 
+      {todos.length && todos.map((todo, idx) => 
         <div className={day_todo} key={idx}>
           <div className={day_check}>
             <div className={day_check_circle(assignInlineVars({ color: todo.state }))}>

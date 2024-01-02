@@ -9,8 +9,16 @@ export const weekday_navigation = style({
 
 export const plus_icon = style ({
   marginLeft: 'auto',
+  
+  ':hover': {
+    cursor: 'pointer'
+  }
 })
 
-export const magnify_icon = style ({
-  
+export const left_chevron_icon = style ({
+  marginRight: 'auto',
+
+  ':hover': {
+    cursor: 'pointer'
+  }
 })
