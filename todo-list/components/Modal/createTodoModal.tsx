@@ -41,17 +41,29 @@ export default function CreateTodoModal({
   const onClickAdd = (evt) => {
     evt.stopPropagation()
 
-    setTodos([
-      ...prevData, 
-      {
-        id: (prevData.length + 1).toString(),
-        time: (new Date(`${dateString} ${timeString}`)).getTime(),
-        title,
-        content,
-        priority: targetPriority,
-        state: targetState,
-      }
-    ])
+    const addData = {
+      id: (prevData.length + 1).toString(),
+      time: (new Date(`${dateString} ${timeString}`)).getTime(),
+      title,
+      content,
+      priority: targetPriority,
+      state: targetState,
+    }
+
+    const targetDate = new Date(dateString || '')
+    const year = targetDate.getFullYear()
+    const month = targetDate.getMonth() + 1
+    const day = targetDate.getDate()
+    const prevTodos = JSON.parse(localStorage.getItem('todos') || '{}')
+
+    prevTodos[`${year}.${month}.${day}`] = [ 
+      ...(prevTodos?.[`${year}.${month}.${day}`] || []), 
+      addData 
+    ]
+    
+    localStorage.setItem('todos', JSON.stringify(prevTodos))
+
+    closeModal(false)
   }
 
   const f_getTimestamp = (date: string) => {
@@ -62,6 +74,7 @@ export default function CreateTodoModal({
     const { year, month, day } = date
     setDateString(`${year.toString().padStart(4, '0')}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`)
     setTimeString(`00:00:00`)
+    
     // setTodos([
     //   ...prevData,
     //   {
@@ -106,7 +119,7 @@ export default function CreateTodoModal({
         </div>
         <div className={modal_body_item}>
           <div className={modal_body_title}>
-            PRIORITY {targetPriority}
+            PRIORITY
           </div>
           <div className={modal_priorities}>
             {[
@@ -117,11 +130,10 @@ export default function CreateTodoModal({
               PRIORITY.LOWEST].map((priority) => {
               return <div 
                 key={priority} 
-                className={
-                  `${modal_priority_circle(assignInlineVars({ 
-                    color: `${priority}`,
-                  }))} ${priority === targetPriority ? 'active' : ''}`
-                }
+                className={modal_priority_circle(assignInlineVars({ 
+                  color: `${priority}`,
+                  empha: priority === targetPriority ? 'active' : '',
+                }))}
                 onClick={() => setTargetPriority(priority)}
               ></div>
             })}
@@ -129,7 +141,7 @@ export default function CreateTodoModal({
         </div>
         <div>
           <div className={modal_body_title}>
-            STATE {targetState}
+            STATE
           </div>
           <div className={modal_states}>
             {[
@@ -139,11 +151,11 @@ export default function CreateTodoModal({
               return <div 
                 key={state} 
                 className={
-                  `${modal_state(assignInlineVars({ 
-                    color: `${state}` 
-                  }))} ${state === targetState ? 'active' : ''}`
-                }
-                onClick={() => (console.log(state),setTargetState(state))}
+                  modal_state(assignInlineVars({ 
+                    color: `${state}`,
+                    empha: state === targetState ? 'active' : '',
+                }))}
+                onClick={() => setTargetState(state)}
               >
                 {state}
               </div>

@@ -87,8 +87,11 @@ export const modal_priority_circle = recipe({
       low: { background: 'rgba(121, 196, 148, 1)' },
       lowest: { background: 'rgba(37, 94, 225, 1)' },
     },
-    active: {
-      border: '2px solid rgba(29, 31, 37, 1)',
+    empha: {
+      active: {
+        border: '2px solid rgba(149, 151, 157, 1)',
+        opacity: 0.5,
+      },
     },
   },
   defaultVariants: {
@@ -132,9 +135,11 @@ export const modal_state = recipe({
         // background: 'rgba(206, 206, 216, 1)',
       }
     },
-    active: {
-      border: '2px solid rgba(29, 31, 37, 1)',
-      background: 'rgba(0,0,0,1)'
+    empha: {
+      active: {
+        border: '2px solid rgba(149, 151, 157, 1)',
+        opacity: 0.5,
+      },
     },
   },
 })

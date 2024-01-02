@@ -11,6 +11,6 @@ export const input = style({
   fontWeight: 600,
 
   ':focus': {
-    borderBottom: '1px solid rgba(29, 31, 44, 1)',
+    boxShadow: '0 -1px 1px -1px rgba(29, 31, 44, 1) inset',
   }
 })

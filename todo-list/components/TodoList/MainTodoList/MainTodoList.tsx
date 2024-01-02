@@ -54,11 +54,12 @@ export default function MainTodoList({ date: target }: { date: date }) {
 
     const tmpWeekday = (new Date(year, month - 1, day)).getDay()
     const todos = JSON.parse(localStorage.getItem('todos') || '{}')
+    const targetTodos = todos[`${year}.${month}.${day}`] || []
 
     setDate(target)
-    setTodos(todos[`${year}.${month}.${day}`] || [])
+    setTodos(targetTodos.sort((a: todo, b: todo) => a.time - b.time) || [])
     setWeekday(tmpWeekday)
-  }, [target])
+  }, [target, isModal])
 
   const onClickAddTodo = (data: todo) => {
     const { year, month, day } = target
