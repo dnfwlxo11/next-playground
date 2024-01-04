@@ -9,7 +9,6 @@ import { useRouter } from 'next/router'
 export default function WeekdayNavigation() {
   const router = useRouter()
   const f_onClickPrevClick = () => {
-
     router.push('/')
   }
 

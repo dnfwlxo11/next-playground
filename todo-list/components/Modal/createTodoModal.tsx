@@ -38,9 +38,7 @@ export default function CreateTodoModal({
   const [targetPriority, setTargetPriority] = useState<PRIORITY>(PRIORITY.NORMAL)
   const [targetState, setTargetState] = useState<STATE>(STATE.PROGRESS)
 
-  const onClickAdd = (evt) => {
-    evt.stopPropagation()
-
+  const onClickAdd = () => {
     const addData = {
       id: (prevData.length + 1).toString(),
       time: (new Date(`${dateString} ${timeString}`)).getTime(),
@@ -88,7 +86,7 @@ export default function CreateTodoModal({
     // ])
   }, [])
 
-  return <div className={modal} onClick={(evt) => { evt.stopPropagation(); closeModal(false)}}>
+  return <div className={modal} onClick={() => {closeModal(false)}}>
     <div className={modal_content} onClick={(evt) => {evt.stopPropagation()}}>
       <div className={modal_body}>
         <div className={modal_body_dates}>

@@ -21,66 +21,43 @@ import {
 import {
   MONTH_SHORT
 } from '@/utils/contants/date'
-import {
-  STATE,
-  PRIORITY,
-} from '@/utils/contants/todo'
 import { todo } from '@/utils/interface/todo'
 import { useEffect, useState } from 'react'
 import SvgIcon from '@/components/Common/SvgIcon'
+import CreateTodoModal from '@/components/Modal/createTodoModal'
 
-export default function DayTodoList(todo: date) {
+export default function DayTodoList() {
   const router = useRouter()
 
-  const [month, setMonth] = useState<number | undefined>(1)
-  const [day, setDay] = useState<number | undefined>(0)
-  const [todos, setTodos] = useState<Array<todo>>([])
-
-  const dummy: Array<todo> = [
-    {
-      id: '1',
-      time: 1703662407765,
-      title: 'qwe1',
-      content: 'qwer1',
-      priority: PRIORITY['NORMAL'],
-      state: STATE['PROGRESS'],
-    },
-    {
-      id: '2',
-      time: 1703662407765,
-      title: 'qwe2',
-      content: 'qwer2',
-      priority: PRIORITY['HIGH'],
-      state: STATE['PENDING'],
-    },
-    {
-      id: '3',
-      time: 1703662407765,
-      title: 'qwe3',
-      content: 'qwer3',
-      priority: PRIORITY['LOW'],
-      state: STATE['DONE'],
-    }
-  ]
+  const [date, setDate] = useState<date>({ year: 0, month: 0, day: 0 })
+  const [todos, setTodos] = useState<todo[]>([])
+  const [isModal, setIsModal] = useState<boolean>(false)
 
   useEffect(() => {
-    const { year, month, day }: date = JSON.parse(localStorage.getItem('latestDate') || '{}')
-    setMonth(month)
-    setDay(day)
+    const tmpDate = new Date()
+    const date = JSON.parse(localStorage.getItem('latestDate') 
+    || `{
+      "year": ${tmpDate.getFullYear()},
+      "month": ${tmpDate.getMonth() + 1},
+      "day": ${tmpDate.getDate()}
+    }`)
+
+    setDate(date)
     
     const targetTodos = JSON.parse(localStorage.getItem('todos') || '[]')
-    setTodos(targetTodos)
-  }, [router])
-
+    const targetDate = `${date.year}.${date.month}.${date.day}`
+    setTodos(targetTodos[targetDate] || [])
+  }, [router, isModal])
+    
   return <div className={day_todos}>
     <div className={day_todos_title}>
       TO-DO
       <span className={day_todos_title_sub}>
-        {month && MONTH_SHORT[month - 1]} {day && day}
+        {date && MONTH_SHORT[date.month - 1]} {date && date.day}
       </span>
     </div>
     <div className={day_todo_list}>
-      {todos.length && todos.map((todo, idx) => 
+      {todos && todos.map((todo, idx) => 
         <div className={day_todo} key={idx}>
           <div className={day_check}>
             <div className={day_check_circle(assignInlineVars({ color: todo.state }))}>
@@ -109,10 +86,10 @@ export default function DayTodoList(todo: date) {
           </div>
           <div className={day_todo_content}>
             <div className={day_todo_title}>
-              {todo.title}
+              {todo.title || ''}
             </div>
             <div className={day_todo_sub}>
-              {todo.time}
+              {todo.time || ''}
             </div>
           </div>
           <div className={day_todo_priority(assignInlineVars({ color: todo.priority }))}></div>
@@ -120,7 +97,7 @@ export default function DayTodoList(todo: date) {
       )}
     </div>
     <div className={day_todo_add}>
-      <div className={day_todo_add_btn}>
+      <div className={day_todo_add_btn} onClick={() => setIsModal(!isModal)}>
         <SvgIcon
           icon={{ 
             src: '/icons/plus.svg',
@@ -131,5 +108,12 @@ export default function DayTodoList(todo: date) {
         />
       </div>
     </div>
+    {isModal && 
+      <CreateTodoModal 
+        date={date}
+        prevData={todos}
+        setTodos={setTodos}
+        closeModal={setIsModal}
+      />}
   </div>
 }
