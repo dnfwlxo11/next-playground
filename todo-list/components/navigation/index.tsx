@@ -1,6 +1,3 @@
-import TodayNav from './today/today-nav'
-import Week from './week/week'
-import WeekCards from './week/week-cards'
 import navStyle from './index.module.scss'
 import SvgIcon from '@/components/Common/SvgIcon'
 import { useEffect, useState } from 'react'
@@ -60,9 +57,6 @@ export default function Header({ type }: { type: string }) {
 					/>
 				</div>
 			</div>
-			{type === 'today' && <TodayNav title='SCHEDULE' />}
-			{type === 'week' && <Week content={test} /> }
-			{type === 'day' && <>qwe</> }
 		</div>
 	)
 }

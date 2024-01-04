@@ -1,14 +1,15 @@
 import { createContext } from "react";
 
-export default (initialState) => {
+export default (initialState: any) => {
   const Context = createContext(initialState)
 
-  const Provider = ({ children }) => {
-    return (
-      <Context.Provider value={initialState}>
-        { children }
-      </Context.Provider>
-    )
+  const Provider = ({ }) => {
+    return <></>
+    // return (
+    //   <Context.Provider value={initialState}>
+    //     { children }
+    //   </Context.Provider>
+    // )
   }
 
   return { Context, Provider }

@@ -28,7 +28,7 @@ import { Context as todoContext } from '@/contexts/todoContext'
 import SvgIcon from '@/components/Common/SvgIcon'
 
 export default function MainCalendar() {
-  const [targetDate, setTargetDate] = useState<date>()
+  const [targetDate, setTargetDate] = useState<date>({ year: 0, month: 0, day: 0 })
   const [monthDays, setMonthDays] = useState<Array<date>>([])
 
   const router = useRouter()
