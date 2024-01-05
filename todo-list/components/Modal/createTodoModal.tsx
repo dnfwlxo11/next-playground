@@ -16,8 +16,8 @@ import {
   modal_state,
 } from './createTodoModal.css'
 import { MouseEventHandler, useEffect, useState } from "react"
-import Button from "../Common/Button"
-import Input from "../Common/Input"
+import Button from "@/components/Common/Button"
+import Input from "@/components/Common/Input"
 import { assignInlineVars } from "@vanilla-extract/dynamic"
 
 export default function CreateTodoModal({ 
