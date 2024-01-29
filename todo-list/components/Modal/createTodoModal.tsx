@@ -39,6 +39,8 @@ export default function CreateTodoModal({
   const [targetState, setTargetState] = useState<STATE>(STATE.PROGRESS)
 
   const onClickAdd = () => {
+    if (!title || !content) return
+
     const addData = {
       id: (prevData.length + 1).toString(),
       time: (new Date(`${dateString} ${timeString}`)).getTime(),

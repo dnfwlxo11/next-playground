@@ -21,6 +21,7 @@ import {
 import {
   MONTH_SHORT
 } from '@/utils/contants/date'
+import { extractToDate } from '@/utils/function/date'
 import { todo } from '@/utils/interface/todo'
 import { useEffect, useState } from 'react'
 import SvgIcon from '@/components/Common/SvgIcon'
@@ -46,8 +47,22 @@ export default function DayTodoList() {
     
     const targetTodos = JSON.parse(localStorage.getItem('todos') || '[]')
     const targetDate = `${date.year}.${date.month}.${date.day}`
-    setTodos(targetTodos[targetDate] || [])
+    setTodos(targetTodos[targetDate].sort((a: todo, b: todo) => a.time - b.time) || [])
   }, [router, isModal])
+
+  const dayTodoTime = (timestamp: number) => {
+    const { 
+      year, 
+      month, 
+      day, 
+      hour, 
+      minute, 
+      second 
+    } = extractToDate(timestamp)
+    
+    return `${year.toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${day.toString().padStart(2, '0')} 
+      ${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}:${second.toString().padStart(2, '0')}`
+  }
     
   return <div className={day_todos}>
     <div className={day_todos_title}>
@@ -89,7 +104,7 @@ export default function DayTodoList() {
               {todo.title || ''}
             </div>
             <div className={day_todo_sub}>
-              {todo.time || ''}
+              {todo.time ? dayTodoTime(todo.time) : ''}
             </div>
           </div>
           <div className={day_todo_priority(assignInlineVars({ color: todo.priority }))}></div>
